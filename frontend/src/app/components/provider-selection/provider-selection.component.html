@@ -1,0 +1,28 @@
+<form [formGroup]="providerForm">
+  <label for="providerSelect" class="text-xl"
+    >Choose a Push Notification Provider:</label
+  >
+  <select
+    id="providerSelect"
+    formControlName="provider"
+    (change)="onProviderSelect($event)"
+  >
+    <option value="" disabled selected>Select a provider</option>
+    <option value="firebase">Firebase</option>
+    <option value="aws sns">AWS SNS</option>
+    <!-- Add more providers here -->
+  </select>
+</form>
+
+<div *ngIf="selectedProvider">
+  <p class="font-bold">You have selected: {{ selectedProvider }}</p>
+  <div>
+    <button
+      (click)="goToCredentials()"
+      class="px-4 py-2 border rounded-md bg-blue-600 text-white"
+    >
+      Next
+    </button>
+  </div>
+  <!-- Here you can add the logic to show the ProviderCredentialsComponent based on selected provider -->
+</div>
