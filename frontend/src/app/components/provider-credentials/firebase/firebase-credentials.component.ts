@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-provider-credentials',
-  templateUrl: './provider-credentials.component.html',
-  styleUrls: ['./provider-credentials.component.scss'],
+  selector: 'app-firebase-credentials',
+  templateUrl: './firebase-credentials.component.html',
+  styleUrls: ['./firebase-credentials.component.scss'],
 })
-export class ProviderCredentialsComponent implements OnInit {
+export class FirebaseCredentialsComponent implements OnInit {
   @Input() provider: string | null = null;
   credentialsForm: FormGroup;
 

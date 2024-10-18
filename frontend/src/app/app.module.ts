@@ -6,7 +6,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProviderCredentialsComponent } from './components/provider-credentials/provider-credentials.component';
+import { FirebaseCredentialsComponent } from './components/provider-credentials/firebase/firebase-credentials.component';
 import { ProviderSelectionComponent } from './components/provider-selection/provider-selection.component';
 import { NotificationService } from './services/notification.service';
 
@@ -14,7 +14,7 @@ import { NotificationService } from './services/notification.service';
   declarations: [
     AppComponent,
     ProviderSelectionComponent,
-    ProviderCredentialsComponent,
+    FirebaseCredentialsComponent,
   ],
   imports: [
     BrowserModule,

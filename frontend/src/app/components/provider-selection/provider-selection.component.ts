@@ -25,6 +25,6 @@ export class ProviderSelectionComponent implements OnInit {
   }
 
   goToCredentials() {
-    this._router.navigate(['provider-credentials']);
+    this._router.navigate(['firebase-credentials']);
   }
 }
