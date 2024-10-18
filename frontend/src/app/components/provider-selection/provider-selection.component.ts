@@ -25,6 +25,11 @@ export class ProviderSelectionComponent implements OnInit {
   }
 
   goToCredentials() {
-    this._router.navigate(['firebase-credentials']);
+    if (this.selectedProvider == 'firebase') {
+      this._router.navigate(['firebase-credentials']);
+    }
+    if (this.selectedProvider == 'aws sns') {
+      this._router.navigate(['aws-credentials']);
+    }
   }
 }
