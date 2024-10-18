@@ -15,8 +15,9 @@ export class FirebaseCredentialsComponent implements OnInit {
     this.credentialsForm = this.fb.group({
       apiKey: ['', Validators.required],
       projectId: ['', Validators.required],
-      awsAccessKey: [''],
-      awsSecretKey: [''],
+      senderId: ['', Validators.required],
+      appId: ['', Validators.required],
+      vapidKey: ['', Validators.required],
     });
   }
 
@@ -29,11 +30,17 @@ export class FirebaseCredentialsComponent implements OnInit {
   onSubmit(): void {
     if (this.credentialsForm.valid) {
       console.log('Credentials:', this.credentialsForm.value);
-      // Handle the submission of credentials
+      this.credentialsForm.reset();
     } else {
-      console.log('Form is invalid');
+      console.log('Form is invalid', this.credentialsForm.errors);
+      for (const control in this.credentialsForm.controls) {
+        if (this.credentialsForm.controls[control].invalid) {
+          console.log(`${control} is invalid`);
+        }
+      }
     }
   }
+
   goToPrev() {
     this._router.navigate(['provider-selection']);
   }
