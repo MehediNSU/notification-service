@@ -1,6 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { CreateNotificationProviderDto } from './dto/create-notification-provider.dto';
+import { NotificationProvider } from './entities/notification-provider.entity';
 import { Notification } from './entities/notification.entity';
 import { User } from './entities/user.entity';
 
@@ -11,6 +13,8 @@ export class NotificationService {
     private readonly notificationRepository: Repository<Notification>,
     @InjectRepository(User)
     private readonly userRepository: Repository<User>,
+    @InjectRepository(NotificationProvider)
+    private readonly notificationProviderRepository: Repository<NotificationProvider>,
   ) {}
 
   // Method to create a notification
@@ -48,5 +52,19 @@ export class NotificationService {
       where: { user: { id: userId } },
       relations: ['user'],
     });
+  }
+
+  // Method to create notification provided
+  async createNotificationProvider(
+    createNotificationProviderDto: CreateNotificationProviderDto,
+  ): Promise<NotificationProvider> {
+    const { provider_name, credentials } = createNotificationProviderDto;
+
+    const newProvider = this.notificationProviderRepository.create({
+      provider_name,
+      credentials,
+    });
+
+    return this.notificationProviderRepository.save(newProvider);
   }
 }
